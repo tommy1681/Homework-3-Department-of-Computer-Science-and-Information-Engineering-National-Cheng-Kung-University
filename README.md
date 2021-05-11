@@ -7,3 +7,4 @@
 * python版本:3.8
 * requiment裡安裝的是tensorflow版本非gpu版本
 
+
