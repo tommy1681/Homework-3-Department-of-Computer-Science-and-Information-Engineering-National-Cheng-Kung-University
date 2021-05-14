@@ -55,11 +55,13 @@ def rule(predict_consumption,predict_generation,last_date):
     ans = []
     for i in range(0,len(predict_consumption[0])):
         last_date = last_date + datetime.timedelta(hours=1)
-        if predict_consumption[0][i] - predict_generation[0][i] > 1.5:
-            ans.append([str(last_date),"buy",2.3,1])
+        if predict_consumption[0][i] - predict_generation[0][i] > 1:
+            price = predict_consumption[0][i] - predict_generation[0][i]-0.5
+            ans.append([str(last_date),"buy",2.5,round(price, 2)])
             
-        elif predict_consumption[0][i] - predict_generation[0][i] < -1.5:
-            ans.append([last_date,"sell",2.3,1])
+        elif predict_consumption[0][i] - predict_generation[0][i] < -1:
+            price = predict_consumption[0][i] - predict_generation[0][i]+0.5
+            ans.append([last_date,"sell",2,round(price, 2)])
             
         else:
             
